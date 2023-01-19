@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import EditAvatar from './EditAvatar';
-import EditProfile from './EditProfile';
-import AddPlace from './AddPlace';
+import EditAvatarPopup from './EditAvatarPopup';
+import EditProfilePopup from './EditProfilePopup';
+import AddPlacePopup from './AddPlacePopup';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function App() {
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState();
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState();
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState();
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
+    React.useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setImagePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -25,10 +28,16 @@ function App() {
     setAddPlacePopupOpen(true);
   }
 
+  function handleCardClick(card) {
+    setImagePopupOpen(true);
+    setSelectedCard(card);
+  }
+
   function closeAllPopups() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setImagePopupOpen(false);
   }
 
   return (
@@ -38,35 +47,28 @@ function App() {
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
+        onCard={handleCardClick}
       />
       <Footer />
-      <EditAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
-      <EditProfile isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
-      <AddPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+      <EditAvatarPopup
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+      />
+      <EditProfilePopup
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+      />
+      <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
       <PopupWithForm
         title={'Вы уверены?'}
         name={'popup-confirm'}
         submitText={'Да'}
       />
-      <ImagePopup />
-
-      <template className='template'>
-        <li className='elements__item'>
-          <div className='elements__delete'></div>
-          <img src='#' alt='' className='elements__image' />
-          <div className='elements__content'>
-            <h2 className='elements__title'></h2>
-            <div className='elements__like-container'>
-              <button
-                type='button'
-                aria-label='Нравится'
-                className='elements__like'></button>
-              <p className='elements__like-counter'>0</p>
-            </div>
-          </div>
-          <span className='elements__hover'></span>
-        </li>
-      </template>
+      <ImagePopup
+        isOpen={isImagePopupOpen}
+        onClose={closeAllPopups}
+        card={selectedCard}
+      />
     </>
   );
 }

@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
+import Card from './Card';
 import { api } from '../utils/Api';
 
 function Main(props) {
   const [userAvatar, setUserAvatar] = React.useState();
   const [userName, setUserName] = React.useState();
   const [userDescription, setUserDescription] = React.useState();
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then((result) => {
-        setUserAvatar(result.avatar);
-        setUserName(result.name);
-        setUserDescription(result.about);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+    return () => {
+      api
+        .getUserInfo()
+        .then((result) => {
+          setUserAvatar(result.avatar);
+          setUserName(result.name);
+          setUserDescription(result.about);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      api
+        .getCards()
+        .then((result) => {
+          setCards(result);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+  }, []);
 
   return (
     <main className='main'>
@@ -51,7 +64,16 @@ function Main(props) {
       </section>
 
       <section className='elements'>
-        <ul className='elements__list'></ul>
+        <ul className='elements__list'>
+          {cards.map((card) => (
+            <Card
+              key={card._id}
+              name={card.name}
+              link={card.link}
+              onCard={props.onCard}
+              likeCounter={card.likes.length}></Card>
+          ))}
+        </ul>
       </section>
     </main>
   );

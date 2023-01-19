@@ -1,6 +1,6 @@
 import PopupWithForm from './PopupWithForm';
 
-function AddPlace(props) {
+function AddPlacePopup(props) {
   return (
     <PopupWithForm
       title={'Новое место'}
@@ -42,4 +42,4 @@ function AddPlace(props) {
   );
 }
 
-export default AddPlace;
+export default AddPlacePopup;

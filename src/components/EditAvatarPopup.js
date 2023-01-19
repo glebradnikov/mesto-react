@@ -1,6 +1,6 @@
 import PopupWithForm from './PopupWithForm';
 
-function EditAvatar(props) {
+function EditAvatarPopup(props) {
   return (
     <PopupWithForm
       title={'Обновить аватар'}
@@ -25,4 +25,4 @@ function EditAvatar(props) {
   );
 }
 
-export default EditAvatar;
+export default EditAvatarPopup;
