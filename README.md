@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Mesto
+![Логотип](https://github.com/glebradnikov/mesto-react/blob/main/public/favicon192.png)
+[Cайт работает по адресу](https://glebradnikov.github.io/mest-react)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание проекта
+Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. Затронута флексбокс-вёрстка, адаптивная вёрстка, позиционирование и продвинутая семантика языка HTML, медиазапросы, Grid Layout, Pixel Perfect. Файловая структура проекта оформлена по правилам Nested БЭМ. Выполнено сглаживание, подгонка размера текста и рендеринг шрифтов. Все изображения оптимизированы. Сайт адаптирован под разные разрешения экрана. Задизайнена попап форма, через которую пользователи смогут изменять имя и место работы. 6 карточек создаются при помощи JS. Форма добавления карточки свёрстана, открывается, добавляет карточку. Работает нажатие на кнопку лайка. Удаление карточки реализовано корректно. Модальные окна закрываются на любых разрешениях экрана. Модальное окно с картинкой открывается, изображение не теряет пропорции. Реализовано плавное открытие и закрытие модального окна CSS-стилями. Разработана валидация всех форм. Улучшен UX при работе с попапами. Код организован по принципам ООП и разбит на модули. Сборка проекта настроена Вебпаком. Проект подключен к серверу. Реализовано отображение количества лайков карточки. Добавлен попап удаления карточки. Реализовано обновление аватара пользователя. Улучшен UX всех форм. Проект портирован на React.
 
-## Available Scripts
+### Технологии
+* флексбокс-вёрстка;
+* адаптивная вёрстка;
+* позиционирование;
+* продвинутая семантика языка HTML;
+* файловая структура Nested БЭМ;
+* медиазапросы;
+* Grid Layout;
+* Pixel Perfect;
+* сглаживание, подгонка размера текста и рендеринг шрифтов;
+* изображения оптимизированы;
+* popups;
+* ООП;
+* модули;
+* webpack;
+* API;
+* Fetch;
+* Promise;
+* React.
 
-In the project directory, you can run:
+### Доступные скрипты
 
-### `npm start`
+В каталоге проекта вы можете запустить:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### `npm start`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Запускает приложение в режиме разработки.
+Откройте [http://localhost:3000](http://localhost:3000), чтобы просмотреть его в браузере.
 
-### `npm test`
+Страница перезагрузится, когда вы внесете изменения.
+Вы также можете увидеть любые ошибки lint в консоли.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### `npm test`
 
-### `npm run build`
+Запускает средство запуска тестов в интерактивном режиме просмотра.
+Дополнительные сведения см. в разделе о [выполнении тестов](https://facebook.github.io/create-react-app/docs/running-tests).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `npm run build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Создает приложение для производства в папку `build`.
+Он правильно объединяет React в производственном режиме и оптимизирует сборку для достижения наилучшей производительности.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Сборка минимизирована, а имена файлов включают хэши.
+Ваше приложение готово к развертыванию!
 
-### `npm run eject`
+Дополнительные сведения см. в разделе о [развертывании](https://facebook.github.io/create-react-app/docs/deployment).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### `npm run eject`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Примечание: это односторонняя операция. Как только вы `eject`, вы не можете вернуться!**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Если вас не устраивает инструмент сборки и выбор конфигурации, вы можете в любое время `eject`. Эта команда удалит единственную зависимость сборки из вашего проекта.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Вместо этого он скопирует все файлы конфигурации и транзитивные зависимости (webpack, Babel, ESLint и т. д.) прямо в ваш проект, чтобы у вас был полный контроль над ними. Все команды, кроме `eject`, по-прежнему будут работать, но они будут указывать на скопированные сценарии, чтобы вы могли их настроить. В этот момент вы предоставлены сами себе.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Вам никогда не придется использовать `eject`. Кураторский набор функций подходит для небольших и средних развертываний, и вы не должны чувствовать себя обязанными использовать эту функцию. Однако мы понимаем, что этот инструмент не был бы полезен, если бы вы не могли настроить его, когда будете к этому готовы.
