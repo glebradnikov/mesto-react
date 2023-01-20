@@ -1,5 +1,6 @@
 # Mesto
 ![Логотип](https://github.com/glebradnikov/mesto-react/blob/main/public/favicon192.png)
+
 [Cайт работает по адресу](https://glebradnikov.github.io/mest-react)
 
 ## Описание проекта
