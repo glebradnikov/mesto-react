@@ -1,13 +1,29 @@
+import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup(props) {
+  const [avatar, setAvatar] = React.useState('');
+
+  function handleChangeAvatar(event) {
+    setAvatar(event.target.пvalue);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    props.onUpdateAvatar({
+      avatar,
+    });
+  }
+
   return (
     <PopupWithForm
       title={'Обновить аватар'}
       name={'edit-avatar'}
       submitText={'Сохранить'}
       isOpen={props.isOpen}
-      onClose={props.onClose}>
+      onClose={props.onClose}
+      onSubmit={handleSubmit}>
       <fieldset className='popup__fieldset'>
         <label className='popup__field'>
           <input
@@ -17,6 +33,7 @@ function EditAvatarPopup(props) {
             id='url-input-avatar'
             className='popup__input'
             required
+            onChange={handleChangeAvatar}
           />
           <span id='url-input-avatar-error' className='popup__error'></span>
         </label>

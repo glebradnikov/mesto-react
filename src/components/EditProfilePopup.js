@@ -1,13 +1,44 @@
+import React from 'react';
 import PopupWithForm from './PopupWithForm';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function EditProfilePopup(props) {
+  const currentUser = React.useContext(CurrentUserContext);
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+
+  React.useEffect(() => {
+    if (props.isOpen) {
+      setName(currentUser.name);
+      setDescription(currentUser.about);
+    }
+  }, [currentUser, props.isOpen]);
+
+  function handleChangeName(event) {
+    setName(event.target.value);
+  }
+
+  function handleChangeDescription(event) {
+    setDescription(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    props.onUpdateUser({
+      name,
+      about: description,
+    });
+  }
+
   return (
     <PopupWithForm
       title={'Редактировать профиль'}
       name={'edit-profile'}
       submitText={'Сохранить'}
       isOpen={props.isOpen}
-      onClose={props.onClose}>
+      onClose={props.onClose}
+      onSubmit={handleSubmit}>
       <fieldset className='popup__fieldset'>
         <label className='popup__field'>
           <input
@@ -19,6 +50,8 @@ function EditProfilePopup(props) {
             id='name-input-edit-profile'
             className='popup__input'
             required
+            value={name}
+            onChange={handleChangeName}
           />
           <span
             id='name-input-edit-profile-error'
@@ -34,6 +67,8 @@ function EditProfilePopup(props) {
             id='workplace-input-edit-profile'
             className='popup__input'
             required
+            value={description}
+            onChange={handleChangeDescription}
           />
           <span
             id='workplace-input-edit-profile-error'

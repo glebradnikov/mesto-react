@@ -19,7 +19,7 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  editUserInfo(data) {
+  setUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
@@ -69,7 +69,13 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  editAvatar(data) {
+  changeLikeCardStatus(cardId, isLiked) {
+    this._status = isLiked ? this.addLike(cardId) : this.deleteLike(cardId);
+
+    return this._status;
+  }
+
+  setAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,

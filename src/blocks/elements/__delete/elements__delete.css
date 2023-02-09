@@ -5,7 +5,9 @@
   z-index: 1;
   width: 18px;
   height: 19px;
+  padding: 0;
   background: url(../../../images/elements-delete.svg) center / cover;
+  border: 0;
   cursor: pointer;
   transition: 1s;
 }
