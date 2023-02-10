@@ -5,7 +5,7 @@ function EditAvatarPopup(props) {
   const [avatar, setAvatar] = React.useState('');
 
   function handleChangeAvatar(event) {
-    setAvatar(event.target.пvalue);
+    setAvatar(event.target.value);
   }
 
   function handleSubmit(event) {

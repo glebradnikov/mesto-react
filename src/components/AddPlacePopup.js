@@ -1,13 +1,35 @@
+import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup(props) {
+  const [name, setName] = React.useState('');
+  const [link, setLink] = React.useState('');
+
+  function handleChangeName(event) {
+    setName(event.target.value);
+  }
+
+  function handleChangeLink(event) {
+    setLink(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    props.onAddPlace({
+      title: name,
+      link,
+    });
+  }
+
   return (
     <PopupWithForm
       title={'Новое место'}
       name={'add-card'}
       submitText={'Создать'}
       isOpen={props.isOpen}
-      onClose={props.onClose}>
+      onClose={props.onClose}
+      onSubmit={handleSubmit}>
       <fieldset className='popup__fieldset'>
         <label className='popup__field'>
           <input
@@ -19,6 +41,7 @@ function AddPlacePopup(props) {
             id='title-input-add-element'
             className='popup__input'
             required
+            onChange={handleChangeName}
           />
           <span
             id='title-input-add-element-error'
@@ -32,6 +55,7 @@ function AddPlacePopup(props) {
             id='url-input-add-element'
             className='popup__input'
             required
+            onChange={handleChangeLink}
           />
           <span
             id='url-input-add-element-error'

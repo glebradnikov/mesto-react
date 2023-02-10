@@ -80,6 +80,19 @@ function App() {
     setAddPlacePopupOpen(true);
   }
 
+  function handleAddPlaceSubmit(data) {
+    api
+      .addCard(data)
+      .then((result) => {
+        setCards([result, ...cards]);
+        closeAllPopups();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // .finally(() => popupWithFormEditProfile.renderLoading(false));
+  }
+
   function handleCardClick(card) {
     setImagePopupOpen(true);
     setSelectedCard(card);
@@ -101,7 +114,16 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    console.log(card);
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((newArray) =>
+          newArray.filter((item) => card._id !== item._id)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function closeAllPopups() {
@@ -134,7 +156,11 @@ function App() {
         onClose={closeAllPopups}
         onUpdateUser={handleUpdateUser}
       />
-      <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+      <AddPlacePopup
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        onAddPlace={handleAddPlaceSubmit}
+      />
       <PopupWithForm
         title={'Вы уверены?'}
         name={'popup-confirm'}
