@@ -13,7 +13,6 @@ function PopupWithForm(props) {
           name={props.name}
           id='form-confirm'
           className='popup__form'
-          noValidate
           onSubmit={props.onSubmit}>
           <legend className='popup__legend'>{props.title}</legend>
           {props.children}

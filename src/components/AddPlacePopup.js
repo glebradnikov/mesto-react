@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup(props) {
-  const [name, setName] = React.useState('');
-  const [link, setLink] = React.useState('');
+  const [name, setName] = useState('');
+  const [link, setLink] = useState('');
+
+  useEffect(() => {
+    if (props.isOpen) {
+      setName('');
+      setLink('');
+    }
+  }, [props.isOpen]);
 
   function handleChangeName(event) {
     setName(event.target.value);
@@ -41,6 +48,7 @@ function AddPlacePopup(props) {
             id='title-input-add-element'
             className='popup__input'
             required
+            value={name}
             onChange={handleChangeName}
           />
           <span
@@ -55,6 +63,7 @@ function AddPlacePopup(props) {
             id='url-input-add-element'
             className='popup__input'
             required
+            value={link}
             onChange={handleChangeLink}
           />
           <span
