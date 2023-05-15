@@ -3,7 +3,7 @@ import headerLogo from '../images/header-logo.svg';
 function Header() {
   return (
     <header className='header'>
-      <a href='#' className='header__link'>
+      <a href='/' className='header__link'>
         <img
           src={headerLogo}
           alt='Mesto Russia'
